@@ -1,0 +1,41 @@
+PODS:
+  - Abra (0.0.1):
+    - AFNetworking
+    - Mantle
+  - AFNetworking (2.0.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.0.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.0.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.0.0)
+  - AFNetworking/Security (2.0.0)
+  - AFNetworking/Serialization (2.0.0)
+  - AFNetworking/UIKit (2.0.0):
+    - AFNetworking/NSURLConnection
+  - Mantle (1.3):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.3)
+
+DEPENDENCIES:
+  - Abra (from `https://github.com/Dimillian/Abra.git`)
+
+EXTERNAL SOURCES:
+  Abra:
+    :git: https://github.com/Dimillian/Abra.git
+
+SPEC CHECKSUMS:
+  Abra: 643599f02a7688b5b49365c5361774da01254244
+  AFNetworking: 3fa983b1beaba69566a3374612511e2a6e3fe845
+  Mantle: c3e963daaad6f1418feacce974d789b2d0465539
+
+COCOAPODS: 0.25.0
