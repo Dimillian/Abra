@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/Dimillian/Abra.git',
     :tag => '0.0.1'
   }
-  s.source_files = 'Source/*.{h,m}'
+  s.source_files = 'Abra/*.{h,m}'
   s.dependency     'AFNetworking'
   s.dependency     'Mantle'
   s.requires_arc =  true
