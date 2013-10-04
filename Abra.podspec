@@ -1,7 +1,8 @@
 Pod::Spec.new do |s|
   s.name         = 'Abra'
-  s.version      = '0.0.1'
+  s.version      = '0.0.2'
   s.summary      = 'Coming soon'
+  s.homepage     = 'https://github.com/Dimillian/Abra'
   s.author = {
     'Thomas Ricouard' => 'ricouard77@gmail.com'
   }
@@ -9,7 +10,9 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/Dimillian/Abra.git',
     :tag => '0.0.1'
   }
-  s.source_files = 'Abra/*.{h,m}'
+  s.ios.deployment_target = '7.0'
+  s.public_header_files = 'Abra/*.h'
+  s.source_files = 'Abra/Abra.h'
   s.dependency     'AFNetworking'
   s.dependency     'Mantle'
   s.requires_arc =  true

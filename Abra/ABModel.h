@@ -1,5 +1,5 @@
 //
-//  Abra.h
+//  ABModel.h
 //  Abra
 //
 //  Created by Thomas Ricouard on 04/10/13.
@@ -7,4 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ABModel.h"
+
+@interface ABModel : NSObject
+
+@end

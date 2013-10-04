@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		9FBE10E417FF00FA007C983B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10E317FF00FA007C983B /* Foundation.framework */; };
 		9FBE10E917FF00FA007C983B /* Abra.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FBE10E817FF00FA007C983B /* Abra.h */; };
-		9FBE10EB17FF00FA007C983B /* Abra.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE10EA17FF00FA007C983B /* Abra.m */; };
 		9FBE10F217FF00FA007C983B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10F117FF00FA007C983B /* XCTest.framework */; };
 		9FBE10F317FF00FA007C983B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10E317FF00FA007C983B /* Foundation.framework */; };
 		9FBE10F517FF00FA007C983B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10F417FF00FA007C983B /* UIKit.framework */; };
 		9FBE10F817FF00FA007C983B /* libAbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10E017FF00FA007C983B /* libAbra.a */; };
 		9FBE10FE17FF00FA007C983B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FBE10FC17FF00FA007C983B /* InfoPlist.strings */; };
 		9FBE110017FF00FA007C983B /* AbraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE10FF17FF00FA007C983B /* AbraTests.m */; };
+		9FBE114C17FF05C3007C983B /* ABModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE114B17FF05C3007C983B /* ABModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,13 +46,14 @@
 		9FBE10E317FF00FA007C983B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FBE10E717FF00FA007C983B /* Abra-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Abra-Prefix.pch"; sourceTree = "<group>"; };
 		9FBE10E817FF00FA007C983B /* Abra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Abra.h; sourceTree = "<group>"; };
-		9FBE10EA17FF00FA007C983B /* Abra.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Abra.m; sourceTree = "<group>"; };
 		9FBE10F017FF00FA007C983B /* AbraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBE10F117FF00FA007C983B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9FBE10F417FF00FA007C983B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9FBE10FB17FF00FA007C983B /* AbraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AbraTests-Info.plist"; sourceTree = "<group>"; };
 		9FBE10FD17FF00FA007C983B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FBE10FF17FF00FA007C983B /* AbraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbraTests.m; sourceTree = "<group>"; };
+		9FBE114A17FF05C3007C983B /* ABModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABModel.h; sourceTree = "<group>"; };
+		9FBE114B17FF05C3007C983B /* ABModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				9FBE10E817FF00FA007C983B /* Abra.h */,
-				9FBE10EA17FF00FA007C983B /* Abra.m */,
+				9FBE114A17FF05C3007C983B /* ABModel.h */,
+				9FBE114B17FF05C3007C983B /* ABModel.m */,
 				9FBE10E617FF00FA007C983B /* Supporting Files */,
 			);
 			path = Abra;
@@ -224,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FBE10EB17FF00FA007C983B /* Abra.m in Sources */,
+				9FBE114C17FF05C3007C983B /* ABModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +411,7 @@
 				9FBE110517FF00FA007C983B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FBE110617FF00FA007C983B /* Build configuration list for PBXNativeTarget "AbraTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +420,7 @@
 				9FBE110817FF00FA007C983B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
