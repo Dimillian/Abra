@@ -1,5 +1,5 @@
 PODS:
-  - Abra (0.0.1):
+  - Abra (0.0.2):
     - AFNetworking
     - Mantle
   - AFNetworking (2.0.0):
@@ -34,7 +34,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/Dimillian/Abra.git
 
 SPEC CHECKSUMS:
-  Abra: 643599f02a7688b5b49365c5361774da01254244
+  Abra: 1b46ac1f2b6fe8e9abc80d2177beef97ef5ed1ba
   AFNetworking: 3fa983b1beaba69566a3374612511e2a6e3fe845
   Mantle: c3e963daaad6f1418feacce974d789b2d0465539
 
