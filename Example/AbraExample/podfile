@@ -1,2 +1,2 @@
 platform :ios, '7.0'
-pod 'Abra', :git => 'https://github.com/Dimillian/Abra.git'
+pod 'Abra', :path => '../../'
