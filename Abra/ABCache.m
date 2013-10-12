@@ -50,11 +50,13 @@ NSString * const kDiskCachePath = @"com.thomasricouard.abraDiskCache";
 {
     __block NSString *key = [path stringByReplacingOccurrencesOfString:@"/" withString:@"#"];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-        [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            key = [key stringByAppendingString:[NSString stringWithFormat:@"#%@#%@", key, obj]];
-        }];
-    });
+    if (parameters) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+            [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                key = [key stringByAppendingString:[NSString stringWithFormat:@"#%@#%@", key, obj]];
+            }];
+        });   
+    }
     return key;
 }
 
@@ -122,7 +124,8 @@ NSString * const kDiskCachePath = @"com.thomasricouard.abraDiskCache";
 
 - (BOOL)archiveObject:(id)object withFilename:(NSString *)filename
 {
-    return [NSKeyedArchiver archiveRootObject:object toFile:[self.filePath stringByAppendingString:filename]];
+    NSString *fullPath = [self.filePath stringByAppendingPathComponent:filename];
+    return [NSKeyedArchiver archiveRootObject:object toFile:fullPath];
 }
 
 - (id)unarchiveObjectWithFilename:(NSString *)filename
