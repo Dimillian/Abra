@@ -66,6 +66,12 @@
     
     [[ABCache cacheManager]cleanInMemoryCache];
     [[ABCache cacheManager]cleanDiskCache];
+    
+    XCTAssertNil([[ABCache cacheManager]cachedObjectForKey:cacheKey
+                                        onlyFromInMemoryCache:YES],
+                   @"Memory cache is not cleaned properly");
+    XCTAssertFalse([[NSFileManager defaultManager]fileExistsAtPath:filePath],
+                  @"Disk cache is not cleaned properly");
 }
 
 
