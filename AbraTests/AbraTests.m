@@ -12,6 +12,9 @@
 
 @interface AbraTests : XCTestCase
 
+@property (nonatomic, strong) ABModelTest *testModel;
+@property (nonatomic, strong) NSString * cacheKey;
+
 @end
 
 @implementation AbraTests
@@ -19,7 +22,17 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    _testModel  = [[ABModelTest alloc]init];
+    NSDate *now = [NSDate date];
+    NSString *originalTitle = @"New title";
+    NSNumber *originalUid = @(123);
+    self.testModel.postedDate = now;
+    self.testModel.title = originalTitle;
+    self.testModel.uid = originalUid;
+    
+    NSString *testPath = @"/post";
+    NSDictionary *testParam = @{@"user": @"me", @"filter": @(1), @"all": @(YES)};
+    _cacheKey = [[ABCache cacheManager]generateCachekeyWithPath:testPath parameters:testParam];
 }
 
 - (void)tearDown
@@ -30,24 +43,19 @@
 
 - (void)testCacheNoAPI
 {
-    ABModelTest *test = [[ABModelTest alloc]init];
-    NSDate *now = [NSDate date];
-    NSString *originalTitle = @"New title";
-    NSNumber *originalUid = @(123);
-    test.postedDate = now;
-    test.title = originalTitle;
-    test.uid = originalUid;
-    
-    NSString *testPath = @"/post";
-    NSDictionary *testParam = @{@"user": @"me", @"filter": @(1), @"all": @(YES)};
-    NSString *cachedKey = [[ABCache cacheManager]generateCachekeyWithPath:testPath parameters:testParam];
-    BOOL cached = [[ABCache cacheManager]cacheObject:test forKey:cachedKey];
-    XCTAssertTrue(cached, @"The object was not cacched correctly");
-    
-    ABModelTest *cachedObject = [[ABCache cacheManager]cachedObjectForKey:cachedKey];
-    XCTAssertTrue(cachedObject.uid.intValue == test.uid.intValue,
-                  @"The cached object uid does not match original object uid");
+    BOOL cached = [[ABCache cacheManager]cacheObject:self.testModel forKey:self.cacheKey];
+    XCTAssertTrue(cached, @"The object was not cached correctly");
 }
 
+- (void)testDecacheNoApi
+{
+    ABModelTest *cachedObject = [[ABCache cacheManager]cachedObjectForKey:self.cacheKey];
+    XCTAssertTrue(cachedObject.uid.intValue == self.testModel.uid.intValue,
+                  @"The cached object uid does not match original object uid");
+    XCTAssertTrue([cachedObject.postedDate.description isEqualToString:self.testModel.postedDate.description],
+                  @"The cached object postedDate does not match original object postedDate");
+    XCTAssertTrue([cachedObject.title isEqualToString: self.testModel.title],
+                  @"The cached object title does not match original object title");
+}
 
 @end
