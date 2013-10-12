@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ABModelTest.h"
+#import "Abra.h"
 
 @interface AbraTests : XCTestCase
 
@@ -26,9 +28,26 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testCacheNoAPI
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    ABModelTest *test = [[ABModelTest alloc]init];
+    NSDate *now = [NSDate date];
+    NSString *originalTitle = @"New title";
+    NSNumber *originalUid = @(123);
+    test.postedDate = now;
+    test.title = originalTitle;
+    test.uid = originalUid;
+    
+    NSString *testPath = @"/post";
+    NSDictionary *testParam = @{@"user": @"me", @"filter": @(1), @"all": @(YES)};
+    NSString *cachedKey = [[ABCache cacheManager]generateCachekeyWithPath:testPath parameters:testParam];
+    BOOL cached = [[ABCache cacheManager]cacheObject:test forKey:cachedKey];
+    XCTAssertTrue(cached, @"The object was not cacched correctly");
+    
+    ABModelTest *cachedObject = [[ABCache cacheManager]cachedObjectForKey:cachedKey];
+    XCTAssertTrue(cachedObject.uid.intValue == test.uid.intValue,
+                  @"The cached object uid does not match original object uid");
 }
+
 
 @end

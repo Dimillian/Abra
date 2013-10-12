@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9108264A527347A19FBBDA34 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E97DAFAA54E340D89FAF18C6 /* libPods.a */; };
+		9F49AA2B1809938400349097 /* ABAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA2A1809938400349097 /* ABAPI.m */; };
+		9F49AA2F180993D800349097 /* ABModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA2E180993D800349097 /* ABModelTest.m */; };
+		9F49AA32180994AB00349097 /* ABModelTestNested.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA31180994AB00349097 /* ABModelTestNested.m */; };
+		9F49AA351809951800349097 /* ABCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA341809951800349097 /* ABCache.m */; };
 		9FBE10E417FF00FA007C983B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10E317FF00FA007C983B /* Foundation.framework */; };
 		9FBE10E917FF00FA007C983B /* Abra.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FBE10E817FF00FA007C983B /* Abra.h */; };
 		9FBE10F217FF00FA007C983B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10F117FF00FA007C983B /* XCTest.framework */; };
@@ -42,6 +47,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F49AA291809938400349097 /* ABAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAPI.h; sourceTree = "<group>"; };
+		9F49AA2A1809938400349097 /* ABAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAPI.m; sourceTree = "<group>"; };
+		9F49AA2D180993D800349097 /* ABModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABModelTest.h; sourceTree = "<group>"; };
+		9F49AA2E180993D800349097 /* ABModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABModelTest.m; sourceTree = "<group>"; };
+		9F49AA30180994AB00349097 /* ABModelTestNested.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABModelTestNested.h; sourceTree = "<group>"; };
+		9F49AA31180994AB00349097 /* ABModelTestNested.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABModelTestNested.m; sourceTree = "<group>"; };
+		9F49AA331809951800349097 /* ABCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCache.h; sourceTree = "<group>"; };
+		9F49AA341809951800349097 /* ABCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCache.m; sourceTree = "<group>"; };
 		9FBE10E017FF00FA007C983B /* libAbra.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAbra.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBE10E317FF00FA007C983B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FBE10E717FF00FA007C983B /* Abra-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Abra-Prefix.pch"; sourceTree = "<group>"; };
@@ -54,6 +67,8 @@
 		9FBE10FF17FF00FA007C983B /* AbraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbraTests.m; sourceTree = "<group>"; };
 		9FBE114A17FF05C3007C983B /* ABModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABModel.h; sourceTree = "<group>"; };
 		9FBE114B17FF05C3007C983B /* ABModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABModel.m; sourceTree = "<group>"; };
+		E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		E97DAFAA54E340D89FAF18C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +88,24 @@
 				9FBE10F817FF00FA007C983B /* libAbra.a in Frameworks */,
 				9FBE10F517FF00FA007C983B /* UIKit.framework in Frameworks */,
 				9FBE10F317FF00FA007C983B /* Foundation.framework in Frameworks */,
+				9108264A527347A19FBBDA34 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F49AA2C180993CC00349097 /* TestModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F49AA2D180993D800349097 /* ABModelTest.h */,
+				9F49AA2E180993D800349097 /* ABModelTest.m */,
+				9F49AA30180994AB00349097 /* ABModelTestNested.h */,
+				9F49AA31180994AB00349097 /* ABModelTestNested.m */,
+			);
+			name = TestModel;
+			sourceTree = "<group>";
+		};
 		9FBE10D717FF00FA007C983B = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +113,7 @@
 				9FBE10F917FF00FA007C983B /* AbraTests */,
 				9FBE10E217FF00FA007C983B /* Frameworks */,
 				9FBE10E117FF00FA007C983B /* Products */,
+				E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +132,7 @@
 				9FBE10E317FF00FA007C983B /* Foundation.framework */,
 				9FBE10F117FF00FA007C983B /* XCTest.framework */,
 				9FBE10F417FF00FA007C983B /* UIKit.framework */,
+				E97DAFAA54E340D89FAF18C6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				9FBE10E817FF00FA007C983B /* Abra.h */,
+				9F49AA331809951800349097 /* ABCache.h */,
+				9F49AA341809951800349097 /* ABCache.m */,
+				9F49AA291809938400349097 /* ABAPI.h */,
+				9F49AA2A1809938400349097 /* ABAPI.m */,
 				9FBE114A17FF05C3007C983B /* ABModel.h */,
 				9FBE114B17FF05C3007C983B /* ABModel.m */,
 				9FBE10E617FF00FA007C983B /* Supporting Files */,
@@ -130,6 +163,7 @@
 		9FBE10F917FF00FA007C983B /* AbraTests */ = {
 			isa = PBXGroup;
 			children = (
+				9F49AA2C180993CC00349097 /* TestModel */,
 				9FBE10FF17FF00FA007C983B /* AbraTests.m */,
 				9FBE10FA17FF00FA007C983B /* Supporting Files */,
 			);
@@ -152,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FBE110317FF00FA007C983B /* Build configuration list for PBXNativeTarget "Abra" */;
 			buildPhases = (
+				716674C2B6EC4BE098656F44 /* Check Pods Manifest.lock */,
 				9FBE10DC17FF00FA007C983B /* Sources */,
 				9FBE10DD17FF00FA007C983B /* Frameworks */,
 				9FBE10DE17FF00FA007C983B /* CopyFiles */,
+				A7E0EA46369C40909F70C3C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FBE110617FF00FA007C983B /* Build configuration list for PBXNativeTarget "AbraTests" */;
 			buildPhases = (
+				7E199519DE43484FA08366A2 /* Check Pods Manifest.lock */,
 				9FBE10EC17FF00FA007C983B /* Sources */,
 				9FBE10ED17FF00FA007C983B /* Frameworks */,
 				9FBE10EE17FF00FA007C983B /* Resources */,
+				8FDCF35922E14FFCBF16DF30 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,12 +259,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		716674C2B6EC4BE098656F44 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E199519DE43484FA08366A2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8FDCF35922E14FFCBF16DF30 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7E0EA46369C40909F70C3C2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FBE10DC17FF00FA007C983B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9FBE114C17FF05C3007C983B /* ABModel.m in Sources */,
+				9F49AA351809951800349097 /* ABCache.m in Sources */,
+				9F49AA2B1809938400349097 /* ABAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +337,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F49AA2F180993D800349097 /* ABModelTest.m in Sources */,
+				9F49AA32180994AB00349097 /* ABModelTestNested.m in Sources */,
 				9FBE110017FF00FA007C983B /* AbraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,11 +437,12 @@
 		};
 		9FBE110417FF00FA007C983B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Abra.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Abra/Abra-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -344,11 +450,12 @@
 		};
 		9FBE110517FF00FA007C983B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Abra.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Abra/Abra-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -356,6 +463,7 @@
 		};
 		9FBE110717FF00FA007C983B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -377,6 +485,7 @@
 		};
 		9FBE110817FF00FA007C983B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0BAA7131DBC4E8ABDED1B58 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (

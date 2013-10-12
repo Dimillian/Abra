@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle.h>
 
-@interface ABModel : NSObject
+@interface ABModel : MTLModel
 
 @end
