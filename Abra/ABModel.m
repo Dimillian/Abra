@@ -10,4 +10,9 @@
 
 @implementation ABModel
 
+- (void)getForPath:(NSString *)path completion:(void (^)(BOOL, BOOL, id))completion
+{
+    
+}
+
 @end
