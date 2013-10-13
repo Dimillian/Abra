@@ -25,6 +25,10 @@ NSString * const kDiskCachePath = @"com.thomasricouard.abraDiskCache";
 
 @implementation ABCache
 
+
+#pragma mark - Setup
+
+
 + (instancetype)cacheManager
 {
     static ABCache *cacheInstance = nil;
@@ -45,6 +49,10 @@ NSString * const kDiskCachePath = @"com.thomasricouard.abraDiskCache";
     }
     return self;
 }
+
+
+#pragma mark - Exposed methods
+
 
 - (NSString *)generateCachekeyWithPath:(NSString *)path parameters:(NSDictionary *)parameters
 {
@@ -119,7 +127,7 @@ NSString * const kDiskCachePath = @"com.thomasricouard.abraDiskCache";
 }
 
 
-#pragma mark - Private method
+#pragma mark - Private methods
 
 
 - (BOOL)archiveObject:(id)object withFilename:(NSString *)filename

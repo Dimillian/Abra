@@ -27,7 +27,7 @@
 
 /**
  Cache the passed object to the in memory cache and to the disk cache, update any previous occurence.
- @param object The object you want to cache
+ @param object The object you want to cache. The object must be a subclass of ABModel or conform to <NSCoding>.
  @param key The key to cache the object (will be the filename too) should be generated from the generateCacheKey method
  @return YES if the object was cached with success
  */
@@ -42,7 +42,7 @@
 
 /**
  Cache the passed object to the in memory cache and eventually to disk cache update any previous occurence.
- @param object The object you want to cache
+ @param object The object you want to cache. The object must be a subclass of ABModel or conform to <NSCoding>.
  @param key The key to cache the object (will be the filename too) should be generated from the generateCacheKey method
  @param inMemory Set to YES if you don't want to persist the passed object to disk
  @return YES if the object was cached with success

@@ -7,6 +7,7 @@
 //
 
 #import "ABViewController.h"
+#import <Abra/Abra.h>
 
 @interface ABViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [ABAPI setupWithBaseURL:[NSURL URLWithString:@"http://api.twitter.com"]];
+    [[ABAPI manager]setReachbilityStatusChangedBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"%d", status);
+    }];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
