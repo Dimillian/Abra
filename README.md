@@ -39,7 +39,7 @@ The idea is that the only thing to do is to call this method
 
 ```objc
 - (void)getForPath:(NSString *)path
-        completion:(void(^)(BOOL success,         BOOL cached, instanceOrArrayOfInstance))completion;
+        completion:(void(^)(BOOL success, BOOL cached, instanceOrArrayOfInstance))completion;
 ```
 A lot of variations of those methods will exist (With parameters, will multiple return block etc..).
 
