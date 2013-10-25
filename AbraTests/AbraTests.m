@@ -79,8 +79,8 @@
 
 - (void)testGeneratedMethods
 {
-    ABModelTest *testModel  = [[ABModelTest alloc]init];
-    ABModelTestNested *nested = [[ABModelTestNested alloc]init];
+    ABModelTest *testModel  = [[ABModelTest alloc]initWithDictionary:nil error:nil];
+    ABModelTestNested *nested = [[ABModelTestNested alloc]initWithDictionary:nil error:nil];
     testModel.nestedModel = nested;
     SEL selector = MTLSelectorWithKeyPattern(@"nestedModel", "JSONTransformer");
     XCTAssertTrue([testModel respondsToSelector:selector], @"JSONTransformer method was not created");
@@ -90,6 +90,27 @@
     selector = MTLSelectorWithKeyPattern(@"urlBis", "JSONTransformer");
     XCTAssertTrue([testModel.nestedModel respondsToSelector:selector], @"URLTransformer method was not created");
     
+}
+
+- (void)testJSONParsing
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *path = [bundle pathForResource:@"objects" ofType:@"json"];
+    NSInputStream *inputStream = [NSInputStream inputStreamWithFileAtPath:path];
+    [inputStream open];
+    NSError *error;
+    NSJSONSerialization *json = [NSJSONSerialization JSONObjectWithStream:inputStream
+                                                                  options:NSJSONReadingAllowFragments
+                                                                    error:&error];
+    [inputStream close];
+    XCTAssertNil(error, @"Error while reading the JSON file");
+    XCTAssertNotNil(json, @"Error while reading the JSON file");
+    error = nil;
+    ABModelTest *test = [MTLJSONAdapter modelOfClass:ABModelTest.class
+                                  fromJSONDictionary:(NSDictionary *)json
+                                               error:&error];
+    XCTAssertNil(error, @"Error while parsing the JSON");
+    XCTAssertNotNil(test, @"Error while parsing the JSON");
 }
 
 

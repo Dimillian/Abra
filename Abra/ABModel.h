@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Mantle.h>
 
-@interface ABModel : MTLModel
+@interface ABModel : MTLModel <MTLJSONSerializing>
 
 - (void)getForPath:(NSString *)path
         completion:(void(^)(BOOL success, BOOL cached, id instanceOrArrayOfInstance))completion;

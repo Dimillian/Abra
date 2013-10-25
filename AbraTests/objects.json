@@ -1,0 +1,12 @@
+{
+    "uid": 13,
+    "title": "test",
+    "postedDate": 672814800,
+    "url": "http://google.fr",
+    "nestedModel" : {
+    	"uid": 14,
+    	 "url": "http://google.fr",
+    	 "urlBis": "http://test.com"
+    }
+
+}

@@ -14,6 +14,10 @@
 
 @implementation ABModel
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{};
+}
+
 - (id)init
 {
     self = [super init];
