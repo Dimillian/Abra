@@ -18,32 +18,38 @@
     return @{};
 }
 
+
 - (id)init
 {
     self = [super init];
     if (self) {
-        NSSet *properties = [self.class propertyKeys];
-        [properties enumerateObjectsUsingBlock:^(NSString *obj, BOOL *stop) {
-            Class class = [self classForPropertyName:obj];
-            if (class) {
-                if ([class isSubclassOfClass:[ABModel class]] || class == [NSURL class]) {
-                    SEL selector = MTLSelectorWithKeyPattern(obj, "JSONTransformer");
-                    if (![self respondsToSelector:selector]) {
-                        class_addMethod(objc_getClass([NSStringFromClass(self.class) UTF8String]),
-                                        selector,
-                                        (IMP)JSONValueTransformer,
-                                        "@@:#");
-                    }
-                }
-            }
-        }];
+        [self.class generateMethods];
     }
     return self;
 }
 
-- (Class)classForPropertyName:(NSString *)propertyName
++ (void)generateMethods
 {
-    objc_property_t property = class_getProperty(self.class, [propertyName UTF8String]);
+    NSSet *properties = [self.class propertyKeys];
+    [properties enumerateObjectsUsingBlock:^(NSString *obj, BOOL *stop) {
+        Class class = [self.class classForPropertyName:obj ofClass:self.class];
+        if (class) {
+            if ([class isSubclassOfClass:[ABModel class]] || class == [NSURL class] || class == [NSArray class]) {
+                SEL selector = MTLSelectorWithKeyPattern(obj, "JSONTransformer");
+                if (![[self class]respondsToSelector:selector]) {
+                    class_addMethod(objc_getClass([NSStringFromClass(self.class) UTF8String]),
+                                    selector,
+                                    (IMP)JSONValueTransformer,
+                                    "@@:");
+                }
+            }
+        }
+    }];
+}
+
++ (Class)classForPropertyName:(NSString *)propertyName ofClass:(Class)class
+{
+    objc_property_t property = class_getProperty(class, [propertyName UTF8String]);
     NSString *type = [NSString stringWithFormat:@"%s", property_getAttributes(property)];
     NSArray *attributes = [type componentsSeparatedByString:@","];
     NSString * typeAttribute = [attributes objectAtIndex:0];
@@ -54,28 +60,32 @@
     return nil;
 }
 
++ (Class)classForArrayNamed:(NSString *)arrayName
+{
+    return nil;
+}
+
 id JSONValueTransformer(id self, SEL _cmd)
 {
     NSString *propertyName = [NSStringFromSelector(_cmd) stringByReplacingOccurrencesOfString:@"JSONTransformer"
                                                                                    withString:@""];
-    return [self dynamicValueTransformer:propertyName];
+    return [ABModel dynamicValueTransformer:propertyName forClass:[self class]];
 }
 
-- (NSValueTransformer *)dynamicValueTransformer:(NSString *)propertyName
++ (NSValueTransformer *)dynamicValueTransformer:(NSString *)propertyName forClass:(Class)class
 {
-    Class class = [self classForPropertyName:propertyName];
-    if ([class isSubclassOfClass:[ABModel class]]) {
-        return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[self classForPropertyName:propertyName]];
+    Class properyClass = [ABModel classForPropertyName:propertyName ofClass:class];
+    if ([properyClass isSubclassOfClass:[ABModel class]]) {
+        return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[self classForPropertyName:propertyName
+                                                                                                  ofClass:class]];
     }
-    else if (class == [NSURL class]) {
+    else if (properyClass == [NSURL class]) {
         return [NSValueTransformer valueTransformerForName:@"MTLURLValueTransformerName"];
     }
+    else if (properyClass == [NSArray class]) {
+        return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[ABModel classForArrayNamed:propertyName]];
+    }
     return nil;
-}
-
-- (void)getForPath:(NSString *)path completion:(void (^)(BOOL, BOOL, id))completion
-{
-    
 }
 
 @end

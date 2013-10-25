@@ -111,6 +111,9 @@
                                                error:&error];
     XCTAssertNil(error, @"Error while parsing the JSON");
     XCTAssertNotNil(test, @"Error while parsing the JSON");
+    XCTAssertTrue(test.uid.integerValue == 13, @"Parsed object uid is false");
+    XCTAssertTrue(test.nestedModels.count == 3, @"Parsed object nested models was not parsed");
+    XCTAssertTrue(test.nestedModel.uid.integerValue == 14, @"Pased object nested model uid is false");
 }
 
 

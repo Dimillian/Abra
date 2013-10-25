@@ -3,10 +3,26 @@
     "title": "test",
     "postedDate": 672814800,
     "url": "http://google.fr",
-    "nestedModel" : {
-    	"uid": 14,
-    	 "url": "http://google.fr",
-    	 "urlBis": "http://test.com"
-    }
-
+    "nestedModel": {
+        "uid": 14,
+        "url": "http://google.fr",
+        "urlBis": "http://test.com"
+    },
+    "nestedModels": [
+                     {
+                     "uid": 15,
+                     "url": "http://google.fr",
+                     "urlBis": "http://test.com"
+                     },
+                     {
+                     "uid": 16,
+                     "url": "http://google.fr",
+                     "urlBis": "http://test.com"
+                     },
+                     {
+                     "uid": 17,
+                     "url": "http://google.fr",
+                     "urlBis": "http://test.com"
+                     }
+                     ]
 }

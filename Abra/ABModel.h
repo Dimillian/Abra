@@ -11,7 +11,6 @@
 
 @interface ABModel : MTLModel <MTLJSONSerializing>
 
-- (void)getForPath:(NSString *)path
-        completion:(void(^)(BOOL success, BOOL cached, id instanceOrArrayOfInstance))completion;
++ (Class)classForArrayNamed:(NSString *)arrayName;
 
 @end

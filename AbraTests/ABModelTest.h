@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSDate *postedDate;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) ABModelTestNested *nestedModel;
+@property (nonatomic, strong) NSArray *nestedModels;
 
 @end

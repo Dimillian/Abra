@@ -10,4 +10,12 @@
 
 @implementation ABModelTest
 
++ (Class)classForArrayNamed:(NSString *)arrayName
+{
+    if ([arrayName isEqualToString:@"nestedModels"]) {
+        return ABModelTestNested.class;
+    }
+    return nil;
+}
+
 @end

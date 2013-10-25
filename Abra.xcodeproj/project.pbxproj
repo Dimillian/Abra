@@ -13,6 +13,7 @@
 		9F49AA32180994AB00349097 /* ABModelTestNested.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA31180994AB00349097 /* ABModelTestNested.m */; };
 		9F49AA351809951800349097 /* ABCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49AA341809951800349097 /* ABCache.m */; };
 		9F91A4C1181A943700007CC8 /* objects.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F91A4C0181A943700007CC8 /* objects.json */; };
+		9F91A4C6181AADAF00007CC8 /* ABModel+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F91A4C5181AADAF00007CC8 /* ABModel+REST.m */; };
 		9FBE10E417FF00FA007C983B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10E317FF00FA007C983B /* Foundation.framework */; };
 		9FBE10E917FF00FA007C983B /* Abra.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FBE10E817FF00FA007C983B /* Abra.h */; };
 		9FBE10F217FF00FA007C983B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE10F117FF00FA007C983B /* XCTest.framework */; };
@@ -57,6 +58,8 @@
 		9F49AA331809951800349097 /* ABCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCache.h; sourceTree = "<group>"; };
 		9F49AA341809951800349097 /* ABCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCache.m; sourceTree = "<group>"; };
 		9F91A4C0181A943700007CC8 /* objects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = objects.json; sourceTree = "<group>"; };
+		9F91A4C4181AADAF00007CC8 /* ABModel+REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABModel+REST.h"; sourceTree = "<group>"; };
+		9F91A4C5181AADAF00007CC8 /* ABModel+REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABModel+REST.m"; sourceTree = "<group>"; };
 		9FBE10E017FF00FA007C983B /* libAbra.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAbra.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBE10E317FF00FA007C983B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FBE10E717FF00FA007C983B /* Abra-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Abra-Prefix.pch"; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				9F49AA2A1809938400349097 /* ABAPI.m */,
 				9FBE114A17FF05C3007C983B /* ABModel.h */,
 				9FBE114B17FF05C3007C983B /* ABModel.m */,
+				9F91A4C4181AADAF00007CC8 /* ABModel+REST.h */,
+				9F91A4C5181AADAF00007CC8 /* ABModel+REST.m */,
 				9FBE10E617FF00FA007C983B /* Supporting Files */,
 			);
 			path = Abra;
@@ -333,6 +338,7 @@
 			files = (
 				9FBE114C17FF05C3007C983B /* ABModel.m in Sources */,
 				9F49AA351809951800349097 /* ABCache.m in Sources */,
+				9F91A4C6181AADAF00007CC8 /* ABModel+REST.m in Sources */,
 				9F49AA2B1809938400349097 /* ABAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

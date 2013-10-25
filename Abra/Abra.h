@@ -7,6 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ABModel.h"
+#import "ABModel+REST.h"
 #import "ABAPI.h"
 #import "ABCache.h"
