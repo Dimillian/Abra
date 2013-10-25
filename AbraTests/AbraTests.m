@@ -83,12 +83,12 @@
     ABModelTestNested *nested = [[ABModelTestNested alloc]initWithDictionary:nil error:nil];
     testModel.nestedModel = nested;
     SEL selector = MTLSelectorWithKeyPattern(@"nestedModel", "JSONTransformer");
-    XCTAssertTrue([testModel respondsToSelector:selector], @"JSONTransformer method was not created");
+    XCTAssertTrue([[ABModelTest class] respondsToSelector:selector], @"JSONTransformer method was not created");
     selector = MTLSelectorWithKeyPattern(@"url", "JSONTransformer");
-    XCTAssertTrue([testModel respondsToSelector:selector], @"URLTransformer method was not created");
-    XCTAssertTrue([testModel.nestedModel respondsToSelector:selector], @"URLTransformer method was not created");
+    XCTAssertTrue([[ABModelTest class] respondsToSelector:selector], @"URLTransformer method was not created");
+    XCTAssertTrue([[ABModelTestNested class] respondsToSelector:selector], @"URLTransformer method was not created");
     selector = MTLSelectorWithKeyPattern(@"urlBis", "JSONTransformer");
-    XCTAssertTrue([testModel.nestedModel respondsToSelector:selector], @"URLTransformer method was not created");
+    XCTAssertTrue([[ABModelTestNested class] respondsToSelector:selector], @"URLTransformer method was not created");
     
 }
 

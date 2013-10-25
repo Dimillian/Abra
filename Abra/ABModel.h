@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Mantle.h>
+#import <Mantle/MTLJSONAdapter.h>
 
 @interface ABModel : MTLModel <MTLJSONSerializing>
 

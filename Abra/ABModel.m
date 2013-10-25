@@ -7,10 +7,8 @@
 //
 
 #import "ABModel.h"
-#import <Mantle/MTLJSONAdapter.h>
 #import <Mantle/MTLReflection.h>
 #import <objc/objc-runtime.h>
-
 
 @implementation ABModel
 
@@ -18,44 +16,39 @@
     return @{};
 }
 
-
-- (id)init
++ (BOOL)resolveClassMethod:(SEL)sel
 {
-    self = [super init];
-    if (self) {
-        [self.class generateMethods];
-    }
-    return self;
-}
-
-+ (void)generateMethods
-{
-    NSSet *properties = [self.class propertyKeys];
-    [properties enumerateObjectsUsingBlock:^(NSString *obj, BOOL *stop) {
-        Class class = [self.class classForPropertyName:obj ofClass:self.class];
-        if (class) {
-            if ([class isSubclassOfClass:[ABModel class]] || class == [NSURL class] || class == [NSArray class]) {
-                SEL selector = MTLSelectorWithKeyPattern(obj, "JSONTransformer");
-                if (![[self class]respondsToSelector:selector]) {
-                    class_addMethod(objc_getClass([NSStringFromClass(self.class) UTF8String]),
-                                    selector,
-                                    (IMP)JSONValueTransformer,
-                                    "@@:");
-                }
-            }
+    NSString *selectorName = NSStringFromSelector(sel);
+    if ([selectorName hasSuffix:@"JSONTransformer"]) {
+        NSString *propertyName = [selectorName stringByReplacingOccurrencesOfString:@"JSONTransformer"
+                                                                                      withString:@""];
+        Class class = [self classForPropertyName:propertyName ofClass:self.class];
+        if ([class isSubclassOfClass:[ABModel class]] || class == [NSURL class] || class == [NSArray class]) {
+            SEL selector = MTLSelectorWithKeyPattern(propertyName, "JSONTransformer");
+            NSString *classname = NSStringFromClass([self class]);
+            Class class = object_getClass(NSClassFromString(classname));
+            class_addMethod(class,
+                            selector,
+                            (IMP)JSONValueTransformer,
+                            "@@:");
         }
-    }];
+        return YES;
+    }
+    return NO;
 }
 
 + (Class)classForPropertyName:(NSString *)propertyName ofClass:(Class)class
 {
-    objc_property_t property = class_getProperty(class, [propertyName UTF8String]);
-    NSString *type = [NSString stringWithFormat:@"%s", property_getAttributes(property)];
-    NSArray *attributes = [type componentsSeparatedByString:@","];
-    NSString * typeAttribute = [attributes objectAtIndex:0];
-    if ([typeAttribute hasPrefix:@"T@"] && [typeAttribute length] > 1) {
-        NSString * typeClassName = [typeAttribute substringWithRange:NSMakeRange(3, [typeAttribute length]-4)];
-        return NSClassFromString(typeClassName);
+    if (class && propertyName) {
+        objc_property_t property = class_getProperty(objc_getClass([NSStringFromClass(class) UTF8String]),
+                                                     [propertyName UTF8String]);
+        NSString *type = [NSString stringWithFormat:@"%s", property_getAttributes(property)];
+        NSArray *attributes = [type componentsSeparatedByString:@","];
+        NSString * typeAttribute = [attributes objectAtIndex:0];
+        if ([typeAttribute hasPrefix:@"T@"] && [typeAttribute length] > 1) {
+            NSString * typeClassName = [typeAttribute substringWithRange:NSMakeRange(3, [typeAttribute length]-4)];
+            return NSClassFromString(typeClassName);
+        }
     }
     return nil;
 }
@@ -83,7 +76,10 @@ id JSONValueTransformer(id self, SEL _cmd)
         return [NSValueTransformer valueTransformerForName:@"MTLURLValueTransformerName"];
     }
     else if (properyClass == [NSArray class]) {
-        return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[ABModel classForArrayNamed:propertyName]];
+        Class arrayClass = [ABModel classForArrayNamed:propertyName];
+        if (arrayClass) {
+            return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:arrayClass];
+        }
     }
     return nil;
 }
