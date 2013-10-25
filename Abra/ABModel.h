@@ -13,4 +13,5 @@
 
 - (void)getForPath:(NSString *)path
         completion:(void(^)(BOOL success, BOOL cached, id instanceOrArrayOfInstance))completion;
+
 @end

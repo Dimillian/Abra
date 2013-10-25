@@ -9,6 +9,9 @@
 #import <XCTest/XCTest.h>
 #import "ABModelTest.h"
 #import "Abra.h"
+#import <Mantle/MTLJSONAdapter.h>
+#import <Mantle/MTLReflection.h>
+#import <objc/objc-runtime.h>
 
 @interface AbraTests : XCTestCase
 
@@ -72,6 +75,21 @@
                    @"Memory cache is not cleaned properly");
     XCTAssertFalse([[NSFileManager defaultManager]fileExistsAtPath:filePath],
                   @"Disk cache is not cleaned properly");
+}
+
+- (void)testGeneratedMethods
+{
+    ABModelTest *testModel  = [[ABModelTest alloc]init];
+    ABModelTestNested *nested = [[ABModelTestNested alloc]init];
+    testModel.nestedModel = nested;
+    SEL selector = MTLSelectorWithKeyPattern(@"nestedModel", "JSONTransformer");
+    XCTAssertTrue([testModel respondsToSelector:selector], @"JSONTransformer method was not created");
+    selector = MTLSelectorWithKeyPattern(@"url", "JSONTransformer");
+    XCTAssertTrue([testModel respondsToSelector:selector], @"URLTransformer method was not created");
+    XCTAssertTrue([testModel.nestedModel respondsToSelector:selector], @"URLTransformer method was not created");
+    selector = MTLSelectorWithKeyPattern(@"urlBis", "JSONTransformer");
+    XCTAssertTrue([testModel.nestedModel respondsToSelector:selector], @"URLTransformer method was not created");
+    
 }
 
 

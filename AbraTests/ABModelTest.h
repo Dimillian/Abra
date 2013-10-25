@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ABModel.h"
+#import "ABModelTestNested.h"
 
 @interface ABModelTest : ABModel
 
 @property (nonatomic, strong) NSNumber *uid;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDate *postedDate;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) ABModelTestNested *nestedModel;
 
 @end

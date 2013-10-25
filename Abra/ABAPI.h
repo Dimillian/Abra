@@ -28,5 +28,4 @@
  */
 + (instancetype)manager;
 
-
 @end
